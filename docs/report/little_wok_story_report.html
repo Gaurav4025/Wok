@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Little Wok Story Project Report</title>
+  <style>
+    body {
+      font-family: "Times New Roman", Times, serif;
+      font-size: 12pt;
+      line-height: 1.45;
+      margin: 1in;
+      color: #000;
+    }
+    h1, h2, h3, h4 {
+      font-weight: bold;
+      text-align: center;
+      margin: 0.6em 0 0.4em;
+    }
+    h1 { font-size: 20pt; }
+    h2 { font-size: 16pt; }
+    h3 { font-size: 14pt; }
+    h4 { font-size: 12pt; }
+    p {
+      text-align: justify;
+      margin: 0.45em 0;
+    }
+    .center { text-align: center; }
+    .cover {
+      margin-top: 2em;
+    }
+    .spacer-lg { height: 2.5em; }
+    .spacer-xl { height: 4em; }
+    .page-break {
+      page-break-before: always;
+      break-before: page;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0.8em 0;
+    }
+    th, td {
+      border: 1px solid #000;
+      padding: 8px;
+      vertical-align: top;
+    }
+    .no-border td, .no-border th {
+      border: none;
+      padding: 4px 0;
+    }
+    ol, ul {
+      margin: 0.4em 0 0.7em 1.5em;
+    }
+    li {
+      margin: 0.2em 0;
+    }
+    .signature-block {
+      margin-top: 3em;
+      width: 100%;
+    }
+    .signature-block td {
+      border: none;
+      width: 50%;
+      padding-top: 2em;
+    }
+    .small {
+      font-size: 11pt;
+    }
+  </style>
+</head>
+<body>
+  <div class="cover center">
+    <p><i>A project report</i></p>
+    <p><i>On</i></p>
+    <h1>LITTLE WOK STORY</h1>
+    <p class="center">A Full-Stack Cloud Kitchen Food Ordering Platform</p>
+
+    <div class="spacer-lg"></div>
+
+    <p>Submitted to</p>
+    <p><b>IILM UNIVERSITY</b></p>
+    <p>In Partial Fulfilment for the award of the degree of</p>
+    <p><b>B.TECH</b></p>
+    <p>In</p>
+    <p><b>COMPUTER SCIENCE AND ENGINEERING</b></p>
+
+    <div class="spacer-lg"></div>
+
+    <p>By</p>
+    <p><b>STUDENT NAME</b></p>
+    <p><b>STUDENT ROLL NUMBER</b></p>
+
+    <div class="spacer-lg"></div>
+
+    <p>Under the guidance of</p>
+    <p><b>FACULTY NAME</b></p>
+    <p><b>DESIGNATION</b></p>
+
+    <div class="spacer-xl"></div>
+
+    <p><b>IILM UNIVERSITY,</b></p>
+    <p>16-18, Knowledge Park II,</p>
+    <p>Greater Noida</p>
+    <p>Uttar Pradesh 201306</p>
+
+    <div class="spacer-xl"></div>
+    <p><b>May 2026</b></p>
+  </div>
+
+  <div class="page-break"></div>
+  <h2>DECLARATION</h2>
+  <p>
+    I declare that the project entitled <b>“Little Wok Story: A Full-Stack Cloud Kitchen Food Ordering Platform”</b>
+    has been prepared by me under the guidance of <b>“FACULTY NAME”</b>. No part of this project has formed
+    the basis for the award of any degree or fellowship previously. The work presented in this report is original
+    and has been carried out solely for academic purposes.
+  </p>
+  <table class="signature-block no-border">
+    <tr>
+      <td>
+        Student Name: _______________________<br />
+        Roll Number: _______________________
+      </td>
+      <td class="center">
+        Signature: _______________________
+      </td>
+    </tr>
+  </table>
+
+  <div class="page-break"></div>
+  <h2>CERTIFICATE</h2>
+  <p>
+    This is to certify that the project report entitled <b>“Little Wok Story: A Full-Stack Cloud Kitchen Food Ordering Platform”</b>
+    submitted by <b>STUDENT NAME</b> in partial fulfilment of the requirements for the award of the degree of
+    <b>B.Tech in Computer Science and Engineering</b> is a bonafide record of work carried out under my supervision.
+  </p>
+  <p>
+    To the best of my knowledge, this work has not been submitted elsewhere for the award of any other degree,
+    diploma, or fellowship.
+  </p>
+  <table class="signature-block no-border">
+    <tr>
+      <td>
+        Guide Name: _______________________<br />
+        Designation: _______________________
+      </td>
+      <td class="center">
+        Signature: _______________________
+      </td>
+    </tr>
+  </table>
+
+  <div class="page-break"></div>
+  <h2>ABSTRACT</h2>
+  <p>
+    The rapid adoption of online ordering has transformed the food service industry, especially for cloud kitchens
+    that depend entirely on digital workflows for customer acquisition, order processing, and delivery coordination.
+    This project presents <b>Little Wok Story</b>, a production-oriented cloud kitchen ordering platform designed for
+    Indo-Chinese and Pan-Asian cuisine. The platform supports customer ordering, menu browsing, cart and checkout,
+    order history, role-based administration, and payment integration.
+  </p>
+  <p>
+    The system has been developed using a modern web architecture with a <b>Next.js 14 frontend</b> and a
+    <b>FastAPI backend</b>. The frontend delivers a responsive and branded user experience, while the backend provides
+    secure REST APIs for authentication, menu management, order creation, coupon validation, and payment workflows.
+    A normalized PostgreSQL schema has been designed to manage users, addresses, menu items, coupons, orders, and
+    order items. Authentication is implemented using JSON Web Tokens (JWT), and security considerations such as
+    password hashing, input validation, role-based access control, and rate limiting have been incorporated.
+  </p>
+  <p>
+    The project addresses both customer-side and business-side requirements. Customers can search dishes, customize
+    orders, maintain saved addresses, and place orders through online payments or cash on delivery. Administrators
+    can manage menu availability, monitor order flow, review user activity, and track business performance through
+    a protected dashboard. The proposed system demonstrates how cloud kitchen operations can be digitized using a
+    scalable full-stack architecture suitable for future extension with real-time order tracking, notifications,
+    multi-location support, and advanced analytics.
+  </p>
+
+  <div class="page-break"></div>
+  <h2>ACKNOWLEDGMENT</h2>
+  <p>
+    I would like to express my sincere gratitude to my project guide <b>FACULTY NAME</b> for valuable guidance,
+    encouragement, and continuous support throughout the development of this project. The guidance provided during
+    requirement analysis, system design, implementation, and documentation helped shape the project in a meaningful way.
+  </p>
+  <p>
+    I also thank the faculty members of the Department of Computer Science and Engineering, IILM University, for
+    creating an academic environment that encouraged practical learning and technical exploration. Their feedback and
+    motivation contributed significantly to the successful completion of this report.
+  </p>
+  <p>
+    Finally, I would like to acknowledge my family, friends, and peers for their support, patience, and encouragement
+    during the course of this work.
+  </p>
+
+  <div class="page-break"></div>
+  <h2>TABLE OF CONTENTS</h2>
+  <table>
+    <tr><th>Section</th><th>Page No.</th></tr>
+    <tr><td>DECLARATION</td><td>ii</td></tr>
+    <tr><td>CERTIFICATE</td><td>iii</td></tr>
+    <tr><td>ABSTRACT</td><td>iv</td></tr>
+    <tr><td>ACKNOWLEDGMENT</td><td>v</td></tr>
+    <tr><td>TABLE OF CONTENTS</td><td>vi</td></tr>
+    <tr><td>LIST OF FIGURES</td><td>vii</td></tr>
+    <tr><td>LIST OF TABLES</td><td>viii</td></tr>
+    <tr><td>LIST OF ABBREVIATIONS</td><td>ix</td></tr>
+    <tr><td>CHAPTER 1 - INTRODUCTION</td><td>1</td></tr>
+    <tr><td>CHAPTER 2 - LITERATURE STUDY</td><td>5</td></tr>
+    <tr><td>CHAPTER 3 - SYSTEM REQUIREMENT ANALYSIS AND DESIGN</td><td>8</td></tr>
+    <tr><td>CHAPTER 4 - METHODOLOGY AND IMPLEMENTATION</td><td>14</td></tr>
+    <tr><td>CHAPTER 5 - RESULTS AND DISCUSSION</td><td>24</td></tr>
+    <tr><td>CHAPTER 6 - CONCLUSION AND FUTURE WORK</td><td>30</td></tr>
+    <tr><td>REFERENCES</td><td>33</td></tr>
+  </table>
+
+  <div class="page-break"></div>
+  <h2>LIST OF FIGURES</h2>
+  <table>
+    <tr><th>Figure No.</th><th>Title</th></tr>
+    <tr><td>Figure 1.1</td><td>High-level system architecture of Little Wok Story</td></tr>
+    <tr><td>Figure 3.1</td><td>Frontend-backend-database interaction model</td></tr>
+    <tr><td>Figure 4.1</td><td>Customer order processing workflow</td></tr>
+    <tr><td>Figure 4.2</td><td>Admin and kitchen operation workflow</td></tr>
+  </table>
+
+  <div class="page-break"></div>
+  <h2>LIST OF TABLES</h2>
+  <table>
+    <tr><th>Table No.</th><th>Title</th></tr>
+    <tr><td>Table 3.1</td><td>Core functional requirements</td></tr>
+    <tr><td>Table 3.2</td><td>Technology stack selection</td></tr>
+    <tr><td>Table 4.1</td><td>Normalized database schema summary</td></tr>
+    <tr><td>Table 5.1</td><td>Feature validation summary</td></tr>
+  </table>
+
+  <div class="page-break"></div>
+  <h2>LIST OF ABBREVIATIONS</h2>
+  <table>
+    <tr><th>Abbreviation</th><th>Meaning</th></tr>
+    <tr><td>API</td><td>Application Programming Interface</td></tr>
+    <tr><td>JWT</td><td>JSON Web Token</td></tr>
+    <tr><td>ORM</td><td>Object Relational Mapping</td></tr>
+    <tr><td>SSR</td><td>Server-Side Rendering</td></tr>
+    <tr><td>UI</td><td>User Interface</td></tr>
+    <tr><td>UX</td><td>User Experience</td></tr>
+    <tr><td>DBMS</td><td>Database Management System</td></tr>
+    <tr><td>COD</td><td>Cash on Delivery</td></tr>
+    <tr><td>RBAC</td><td>Role-Based Access Control</td></tr>
+  </table>
+
+  <div class="page-break"></div>
+  <h2>CHAPTER 1</h2>
+  <h3>INTRODUCTION</h3>
+  <p>
+    Food ordering has shifted from a traditional in-person activity to a predominantly digital experience. Cloud kitchens,
+    unlike conventional restaurants, rely almost entirely on online channels for visibility, order management, and revenue.
+    This change creates a strong need for reliable software platforms that connect customers, kitchen operations, and business
+    administration within a single system.
+  </p>
+  <p>
+    <b>Little Wok Story</b> is conceived as a dedicated food ordering platform for a cloud kitchen specializing in
+    Indo-Chinese and Pan-Asian cuisine. The project focuses on building a usable, scalable, and secure solution that supports
+    customer ordering, menu exploration, checkout, order tracking, and business-side administration. The objective is not only
+    to create a visually appealing website, but also to implement the core backend logic and data design needed for real-world
+    deployment.
+  </p>
+  <p>
+    The system has been designed around three primary user roles: customers, administrators, and kitchen staff. Customers
+    require a smooth browsing and checkout experience. Administrators require control over menu items, orders, coupons, and
+    analytics. Kitchen staff require visibility into incoming orders and preparation status. These needs make the project a
+    practical case study in full-stack application development.
+  </p>
+  <h4>1.1 Problem Statement</h4>
+  <p>
+    Many small and medium cloud kitchens depend on third-party platforms that charge high commissions and offer limited brand
+    control. They often lack custom workflows, direct customer ownership, and role-specific management tools. This project aims
+    to provide an independent ordering platform that allows a cloud kitchen to manage branding, ordering, operations, and
+    customer engagement more effectively.
+  </p>
+  <h4>1.2 Objectives of the Project</h4>
+  <ol>
+    <li>To design and implement a responsive food ordering website for a cloud kitchen brand.</li>
+    <li>To build secure backend APIs for authentication, menu management, order creation, and payments.</li>
+    <li>To design a normalized relational database schema for operational consistency and scalability.</li>
+    <li>To provide separate access flows for customers, administrators, and kitchen staff.</li>
+    <li>To create a system architecture that can be extended in production with notifications, analytics, and real-time updates.</li>
+  </ol>
+  <h4>1.3 Scope of the Project</h4>
+  <p>
+    The current implementation covers customer ordering, cart management, checkout flow, order history, admin panel scaffolding,
+    kitchen display view, coupon support, and payment integration endpoints for Razorpay and Stripe. The scope excludes full
+    production deployment, real SMS/WhatsApp notifications, and real-time live tracking, though the architecture supports their
+    addition in future iterations.
+  </p>
+
+  <div class="page-break"></div>
+  <h2>CHAPTER 2</h2>
+  <h3>LITERATURE STUDY</h3>
+  <p>
+    The development of online food ordering systems has been influenced by research in e-commerce, human-computer interaction,
+    distributed systems, and mobile commerce. Existing platforms such as Swiggy, Zomato, Uber Eats, and restaurant-owned systems
+    illustrate how digital ordering must balance speed, usability, transaction safety, and operational coordination.
+  </p>
+  <p>
+    Prior software engineering studies emphasize the value of modular design, layered architecture, and role-based system access
+    in transactional applications. In food ordering domains, common challenges include maintaining menu accuracy, reducing checkout
+    friction, ensuring payment reliability, and supporting operations across customer and staff interfaces. A well-structured
+    architecture therefore needs clear separation between presentation, application logic, and persistence layers.
+  </p>
+  <p>
+    Modern web stacks increasingly combine a React-based frontend with lightweight API services and relational databases. Next.js
+    is widely adopted for fast, SEO-friendly interfaces, while FastAPI has emerged as a strong backend framework for Python due to
+    its performance, clean routing model, and type-driven validation. SQL databases remain suitable for order-centric systems
+    because food ordering workflows are strongly transactional and relational by nature.
+  </p>
+  <h4>2.1 Study of Existing Systems</h4>
+  <ul>
+    <li>Aggregator platforms provide reach but reduce direct brand ownership and profitability through commissions.</li>
+    <li>Simple static restaurant websites provide branding but often lack operational workflows such as status management and coupon logic.</li>
+    <li>Custom admin systems improve control but require careful attention to security, validation, and scalability.</li>
+  </ul>
+  <h4>2.2 Motivation for the Proposed System</h4>
+  <p>
+    The proposed system combines branded customer experience with direct control over menu, pricing, orders, and business logic.
+    It is especially suitable for a cloud kitchen that wants independence from third-party marketplaces while maintaining room for
+    operational growth.
+  </p>
+
+  <div class="page-break"></div>
+  <h2>CHAPTER 3</h2>
+  <h3>SYSTEM REQUIREMENT ANALYSIS AND DESIGN</h3>
+  <h4>3.1 Functional Requirements</h4>
+  <table>
+    <tr>
+      <th>Module</th>
+      <th>Requirement</th>
+    </tr>
+    <tr>
+      <td>Authentication</td>
+      <td>User registration, login, token generation, protected access for role-specific routes.</td>
+    </tr>
+    <tr>
+      <td>Menu</td>
+      <td>Category filtering, search, item details, spice level display, customization support, and add-to-cart.</td>
+    </tr>
+    <tr>
+      <td>Cart and Checkout</td>
+      <td>Quantity updates, coupon logic, address submission, order summary, COD and online payment flows.</td>
+    </tr>
+    <tr>
+      <td>Orders</td>
+      <td>Order creation, order history, status updates, kitchen queue visibility, and admin management.</td>
+    </tr>
+    <tr>
+      <td>Administration</td>
+      <td>Analytics, user listing, coupon creation, menu management, and order status control.</td>
+    </tr>
+  </table>
+  <h4>3.2 Non-Functional Requirements</h4>
+  <ul>
+    <li>Responsive design for desktop and mobile devices.</li>
+    <li>Secure authentication and protected APIs.</li>
+    <li>Scalable schema and modular architecture.</li>
+    <li>SEO-friendly frontend rendering.</li>
+    <li>Usable interface for both customers and administrators.</li>
+  </ul>
+  <h4>3.3 Technology Stack</h4>
+  <table>
+    <tr>
+      <th>Layer</th>
+      <th>Technology Used</th>
+      <th>Purpose</th>
+    </tr>
+    <tr>
+      <td>Frontend</td>
+      <td>Next.js 14, TypeScript, Tailwind CSS, Framer Motion, Zustand</td>
+      <td>Responsive UI, routing, animations, and client-side state management</td>
+    </tr>
+    <tr>
+      <td>Backend</td>
+      <td>FastAPI, Python, SQLAlchemy</td>
+      <td>REST API development, business logic, validation, and service orchestration</td>
+    </tr>
+    <tr>
+      <td>Database</td>
+      <td>PostgreSQL</td>
+      <td>Transactional data storage for users, menu, orders, and coupons</td>
+    </tr>
+    <tr>
+      <td>Authentication</td>
+      <td>JWT, bcrypt</td>
+      <td>Secure login sessions and password hashing</td>
+    </tr>
+    <tr>
+      <td>Payments</td>
+      <td>Razorpay, Stripe</td>
+      <td>Support for domestic and global online payment workflows</td>
+    </tr>
+  </table>
+  <h4>3.4 System Architecture</h4>
+  <p class="center">
+    Customer Browser / Admin Browser / Kitchen View<br />
+    ↓<br />
+    Next.js Frontend (UI, State, Routing, Forms, SEO)<br />
+    ↓ REST API Calls<br />
+    FastAPI Backend (Auth, Orders, Menu, Coupons, Payments, Admin Logic)<br />
+    ↓<br />
+    PostgreSQL Database
+  </p>
+  <h4>3.5 Database Design Summary</h4>
+  <table>
+    <tr><th>Entity</th><th>Purpose</th></tr>
+    <tr><td>Users</td><td>Stores customer, admin, and kitchen identities.</td></tr>
+    <tr><td>Addresses</td><td>Stores delivery details linked to a user.</td></tr>
+    <tr><td>Menu</td><td>Stores dish catalog, category, pricing, and availability.</td></tr>
+    <tr><td>Coupons</td><td>Stores discount logic and expiry details.</td></tr>
+    <tr><td>Orders</td><td>Stores order-level totals, payment state, status, and ownership.</td></tr>
+    <tr><td>Order Items</td><td>Stores item-level order details and quantities.</td></tr>
+  </table>
+
+  <div class="page-break"></div>
+  <h2>CHAPTER 4</h2>
+  <h3>METHODOLOGY AND IMPLEMENTATION</h3>
+  <p>
+    The project follows a modular development methodology in which the frontend, backend, and database layers are designed as
+    separate but coordinated components. This approach improves maintainability and allows independent scaling of major system
+    parts. The implementation was guided by the principle of clear responsibility: the frontend manages user interaction, the
+    backend manages rules and validation, and the database persists relational state.
+  </p>
+  <h4>4.1 Frontend Implementation</h4>
+  <p>
+    The frontend is built using Next.js 14 with the App Router. Core user-facing pages include the landing page, menu page, cart,
+    checkout, dashboard, admin panel, and kitchen display. Tailwind CSS is used for styling, while Framer Motion supports subtle
+    interface animations. Zustand is used to manage cart state in the browser, including quantity changes and coupon codes.
+  </p>
+  <h4>4.2 Backend Implementation</h4>
+  <p>
+    The backend is developed using FastAPI. REST endpoints are grouped by domain, such as authentication, menu, addresses,
+    coupons, orders, payments, and administration. Pydantic schemas validate request and response data, while SQLAlchemy models
+    map application entities to relational tables. Dependencies are used to enforce authenticated and role-protected access.
+  </p>
+  <h4>4.3 Security Implementation</h4>
+  <ul>
+    <li>Passwords are hashed using bcrypt before storage.</li>
+    <li>JWT tokens are used to authenticate protected requests.</li>
+    <li>Rate limiting is applied to sensitive endpoints such as login and order creation.</li>
+    <li>Role-based dependencies protect admin and kitchen routes.</li>
+    <li>CSRF checks and validation layers reduce common web risks.</li>
+  </ul>
+  <h4>4.4 Payment Workflow</h4>
+  <p>
+    The payment layer supports Razorpay for Indian transactions and Stripe as a global fallback. The backend exposes endpoints to
+    create payment sessions and verify completed payments. Verification is handled on the server side to ensure that order status
+    is not updated purely from frontend signals. A COD path is also supported for operational flexibility.
+  </p>
+  <h4>4.5 Order Processing Workflow</h4>
+  <ol>
+    <li>User authenticates and stores a valid session token.</li>
+    <li>User selects food items, customizations, and quantities.</li>
+    <li>User submits delivery address and checkout request.</li>
+    <li>Backend validates menu availability, coupon eligibility, and totals.</li>
+    <li>Order and order items are stored in the database.</li>
+    <li>Payment is initiated or COD is selected.</li>
+    <li>Admin and kitchen flows can update the order through preparation and delivery states.</li>
+  </ol>
+
+  <div class="page-break"></div>
+  <h2>CHAPTER 5</h2>
+  <h3>RESULTS AND DISCUSSION</h3>
+  <p>
+    The developed system successfully demonstrates the key workflows expected from a branded cloud kitchen ordering platform.
+    The frontend provides a modern and responsive customer experience with searchable menu browsing, cart management, and a
+    structured checkout process. The backend supports authentication, order processing, and protected administrative operations.
+  </p>
+  <h4>5.1 Feature Validation Summary</h4>
+  <table>
+    <tr>
+      <th>Feature</th>
+      <th>Status</th>
+      <th>Remarks</th>
+    </tr>
+    <tr>
+      <td>Landing page and brand presentation</td>
+      <td>Implemented</td>
+      <td>Responsive interface with themed styling and sectioned layout</td>
+    </tr>
+    <tr>
+      <td>Menu search and filtering</td>
+      <td>Implemented</td>
+      <td>Category-based filtering and text search are available</td>
+    </tr>
+    <tr>
+      <td>Cart and checkout flow</td>
+      <td>Implemented</td>
+      <td>Supports totals, GST, delivery fee, and address submission</td>
+    </tr>
+    <tr>
+      <td>JWT authentication</td>
+      <td>Implemented</td>
+      <td>Frontend and backend integration is scaffolded</td>
+    </tr>
+    <tr>
+      <td>Admin routes and analytics endpoints</td>
+      <td>Implemented</td>
+      <td>Core admin modules are available for further UI enrichment</td>
+    </tr>
+    <tr>
+      <td>Razorpay and Stripe integration endpoints</td>
+      <td>Implemented</td>
+      <td>Ready for activation with production credentials</td>
+    </tr>
+  </table>
+  <h4>5.2 Observations</h4>
+  <p>
+    The separation of concerns between frontend and backend makes the system easier to extend and debug. The use of a relational
+    database is particularly effective because order workflows depend on strong relationships between users, menu items, and
+    transaction records. The chosen architecture also supports future migration to production hosting platforms without major redesign.
+  </p>
+  <h4>5.3 Limitations</h4>
+  <ul>
+    <li>Real-time socket-based order updates are not yet enabled.</li>
+    <li>Production email, SMS, or WhatsApp notification channels require live credentials.</li>
+    <li>Image upload and storage are currently represented as URL-based content rather than a full media pipeline.</li>
+    <li>Advanced analytics and loyalty programs remain future enhancements.</li>
+  </ul>
+
+  <div class="page-break"></div>
+  <h2>CHAPTER 6</h2>
+  <h3>CONCLUSION AND FUTURE WORK</h3>
+  <p>
+    This project demonstrates the design and development of a full-stack food ordering platform for a cloud kitchen brand. The
+    system combines customer-facing usability with backend reliability and administrative control. It shows how a modern web stack
+    can be used to build an independent ordering solution that reduces dependence on third-party aggregators and strengthens direct
+    brand ownership.
+  </p>
+  <p>
+    From a software engineering perspective, the project highlights the practical value of modular architecture, typed interfaces,
+    secure API design, and normalized data modeling. It also illustrates how role-based access can support multiple stakeholders
+    within the same digital platform, including customers, admins, and kitchen operators.
+  </p>
+  <p>
+    Future work may include real-time order notifications, live kitchen dashboards, loyalty points, AI-based recommendations,
+    push notifications, multi-location support, and deployment to managed cloud platforms. With these extensions, the platform can
+    evolve from an academic prototype into a market-ready product for operational use.
+  </p>
+
+  <div class="page-break"></div>
+  <h2>REFERENCES</h2>
+  <ol class="small">
+    <li>Next.js Documentation. Vercel. Available at: https://nextjs.org/docs</li>
+    <li>FastAPI Documentation. Available at: https://fastapi.tiangolo.com</li>
+    <li>SQLAlchemy Documentation. Available at: https://docs.sqlalchemy.org</li>
+    <li>PostgreSQL Documentation. Available at: https://www.postgresql.org/docs</li>
+    <li>Razorpay Developer Documentation. Available at: https://razorpay.com/docs</li>
+    <li>Stripe API Documentation. Available at: https://docs.stripe.com</li>
+    <li>Nielsen, J. Usability Engineering. Morgan Kaufmann, 1994.</li>
+    <li>Gamma, E., Helm, R., Johnson, R., and Vlissides, J. Design Patterns: Elements of Reusable Object-Oriented Software. Addison-Wesley, 1994.</li>
+  </ol>
+</body>
+</html>
